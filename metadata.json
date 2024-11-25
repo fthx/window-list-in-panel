@@ -1,0 +1,11 @@
+{
+"extension-id": "window-list-in-panel",
+"uuid": "window-list-in-panel@fthx",
+"settings-schema": "org.gnome.shell.extensions.window-list",
+"gettext-domain": "gnome-shell-extensions",
+"name": "Window List in Panel",
+"description": "Display a window list in the top panel.\n\nThis unofficial extension is a fork of the part of Classic Mode officially supported by GNOME.",
+"shell-version": [ "47" ],
+"url": "https://github.com/fthx/window-list-in-panel",
+"version": 999
+}
