@@ -31,8 +31,6 @@ class WindowListPage extends Adw.PreferencesPage {
         this._actionGroup.add_action(
             this._settings.create_action('grouping-mode'));
         this._actionGroup.add_action(
-            this._settings.create_action('show-on-all-monitors'));
-        this._actionGroup.add_action(
             this._settings.create_action('display-all-workspaces'));
         this._actionGroup.add_action(
             this._settings.create_action('embed-previews'));
@@ -64,13 +62,7 @@ class WindowListPage extends Adw.PreferencesPage {
         const miscGroup = new Adw.PreferencesGroup();
         this.add(miscGroup);
 
-        let row = new Adw.SwitchRow({
-            title: _('Show on all monitors'),
-            action_name: 'window-list.show-on-all-monitors',
-        });
-        miscGroup.add(row);
-
-        row = new Adw.SwitchRow({
+        const row = new Adw.SwitchRow({
             title: _('Show windows from all workspaces'),
             action_name: 'window-list.display-all-workspaces',
         });

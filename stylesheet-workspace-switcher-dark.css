@@ -1,6 +1,7 @@
 /*
  * SPDX-FileCopyrightText: 2011 Erick Pérez Castellanos <erick.red@gmail.com>
  * SPDX-FileCopyrightText: 2019 Florian Müllner <fmuellner@gnome.org>
+ * SPDX-FileCopyrightText: 2024 Francois Thirioux <thirioux@gmail.com>
  *
  * SPDX-License-Identifier: GPL-2.0-or-later
  */
@@ -46,7 +47,7 @@
 
 .window-list-workspace-indicator-menu .workspace,
 .window-list-workspace-indicator .workspace {
-  border: 1px solid transparent;
+  border: 2px solid transparent;
   border-radius: 4px;
   background-color: #3f3f3f;
 }

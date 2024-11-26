@@ -46,6 +46,7 @@ const GroupingMode = {
     ALWAYS: 2,
 };
 
+
 class DragPlaceholderItem extends DashItemContainer {
     static {
         GObject.registerClass(this);
@@ -394,42 +395,6 @@ class BaseButton extends DashItemContainer {
             duration: DASH_ITEM_LABEL_SHOW_TIME,
             mode: Clutter.AnimationMode.EASE_OUT_QUAD,
         });
-
-        /*
-        showLabel() {
-            if (!this._labelText)
-                return;
-
-            this.label.set_text(this._labelText);
-            this.label.opacity = 0;
-            this.label.show();
-
-            let [stageX, stageY] = this.get_transformed_position();
-
-            const itemWidth = this.allocation.get_width();
-
-            const labelWidth = this.label.get_width();
-            const xOffset = Math.floor((itemWidth - labelWidth) / 2);
-            const x = Math.clamp(stageX + xOffset, 0, global.stage.width - labelWidth);
-
-            let node = this.label.get_theme_node();
-            const yOffset = node.get_length('-y-offset');
-
-            const y = stageY - this.label.height - yOffset;
-
-            this.label.set_position(x, y);
-            this.label.ease({
-                opacity: 255,
-                duration: DASH_ITEM_LABEL_SHOW_TIME,
-                mode: Clutter.AnimationMode.EASE_OUT_QUAD,
-            });
-        }
-
-        setLabelText(text) {
-            this._labelText = text;
-            this.child.accessible_name = text;
-        }
-    */
     }
 
     _setLongPressTimeout() {
@@ -618,6 +583,7 @@ class WindowButton extends BaseButton {
         this.label_actor = this._windowTitle.label_actor;
 
         this._contextMenu = new WindowContextMenu(this, this.metaWindow);
+
         this._contextMenu.connect('open-state-changed',
             this._onMenuStateChanged.bind(this));
         this._contextMenu.actor.hide();
@@ -755,6 +721,7 @@ class AppButton extends BaseButton {
 
         this._menuManager = new PopupMenu.PopupMenuManager(this);
         this._menu = new PopupMenu.PopupMenu(this, 0.5, St.Side.BOTTOM);
+
         this._menu.connect('open-state-changed',
             this._onMenuStateChanged.bind(this));
         this._menu.actor.hide();
