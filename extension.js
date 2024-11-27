@@ -1383,22 +1383,41 @@ export default class WindowListExtension extends Extension {
         super(metadata);
     }
 
-    _show_activities(show) {
-        let activities_indicator = Main.panel.statusArea.activities;
+    _showActivities(flag) {
+        let activitiesIndicator = Main.panel.statusArea.activities;
 
-        if (activities_indicator)
-            activities_indicator.visible = show;
+        if (activitiesIndicator)
+            activitiesIndicator.visible = flag;
     }
 
-    _move_date(active) {
-        if (Main.sessionMode.isLocked)
-            return;
+    _moveLeftBoxChildren(flag) {
+        this._movedChildList = [];
 
-        if (active) {
-            Main.sessionMode.panel.center = Main.sessionMode.panel.center.filter(item => item != 'dateMenu')
+        if (flag) {
+            Main.panel._leftBox.get_children().forEach(child => {
+                Main.panel._leftBox.remove_child(child);
+                Main.panel._rightBox.insert_child_at_index(child, 0);
+
+                this._movedChildList.push(child);
+            });
+        } else {
+            this._movedChildList.forEach(child => {
+                    Main.panel._rightBox.remove_child(child);
+                    Main.panel._leftBox.add_child(child);
+
+            this._movedChildList = null;
+            });
+        }
+    }
+
+    _moveDate(flag) {
+        if (flag) {
+            Main.sessionMode.panel.center = Main.sessionMode.panel.center
+                .filter(item => item != 'dateMenu')
             Main.sessionMode.panel.right.splice(-1, 0, 'dateMenu');
         } else {
-            Main.sessionMode.panel.right = Main.sessionMode.panel.right.filter(item => item != 'dateMenu')
+            Main.sessionMode.panel.right = Main.sessionMode.panel.right
+                .filter(item => item != 'dateMenu')
             Main.sessionMode.panel.center.push('dateMenu');
         }
 
@@ -1411,25 +1430,39 @@ export default class WindowListExtension extends Extension {
             this._windowList = null;
         }
 
-        this._windowList = new WindowList(false, Main.layoutManager.primaryMonitor, this.getSettings());
+        let monitor = Main.layoutManager.primaryMonitor;
+        this._windowList = new WindowList(false, monitor, this.getSettings());
+
         Main.panel._leftBox.add_child(this._windowList);
     }
 
     enable() {
-        this._show_activities(false);
-        this._move_date(true);
+        this._timeout = GLib.idle_add(GLib.PRIORITY_DEFAULT_IDLE, () => {
+            if (!Main.sessionMode.isLocked) {
+                this._showActivities(false);
+                this._moveDate(true);
+                this._moveLeftBoxChildren(true);
+            }
 
-        this._settings = this.getSettings();
-        this._settings.connectObject('changed::show-on-all-monitors',
-            () => this._buildWindowList(), this);
+            this._settings = this.getSettings();
+            this._settings.connectObject('changed::show-on-all-monitors',
+                () => this._buildWindowList(), this);
 
-        Main.layoutManager.connectObject('monitors-changed',
-            () => this._buildWindowList(), this);
+            Main.layoutManager.connectObject('monitors-changed',
+                () => this._buildWindowList(), this);
 
-        this._buildWindowList();
+            this._buildWindowList();
+
+            return GLib.SOURCE_REMOVE;
+        });
     }
 
     disable() {
+        if (this._timeout) {
+            GLib.source_remove(this._timeout);
+            this._timeout = null;
+        }
+
         if (!this._windowList)
             return;
 
@@ -1441,8 +1474,11 @@ export default class WindowListExtension extends Extension {
         this._windowList.destroy();
         this._windowList = null;
 
-        this._show_activities(true);
-        this._move_date(false);
+        if (!Main.sessionMode.isLocked) {
+            this._showActivities(true);
+            this._moveDate(false);
+            this._moveLeftBoxChildren(false);
+        }
     }
 
     someWindowListContains(actor) {
