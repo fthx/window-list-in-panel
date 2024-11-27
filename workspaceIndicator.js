@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: 2011 Erick Pérez Castellanos <erick.red@gmail.com>
 // SPDX-FileCopyrightText: 2011 Giovanni Campagna <gcampagna@src.gnome.org>
 // SPDX-FileCopyrightText: 2017 Florian Müllner <fmuellner@gnome.org>
+// SPDX-FileCopyrightText: 2024 Francois Thirioux <thirioux@gmail.com>
 //
 // SPDX-License-Identifier: GPL-2.0-or-later
 
@@ -18,7 +19,7 @@ import * as PanelMenu from 'resource:///org/gnome/shell/ui/panelMenu.js';
 import * as PopupMenu from 'resource:///org/gnome/shell/ui/popupMenu.js';
 
 const TOOLTIP_OFFSET = 6;
-const TOOLTIP_ANIMATION_TIME = 150;
+const TOOLTIP_ANIMATION_TIME = 500;
 
 const SCROLL_TIME = 100;
 
@@ -298,7 +299,7 @@ class WorkspaceThumbnail extends St.Button {
         this._tooltip.ease({
             opacity: this.hover ? 255 : 0,
             duration: TOOLTIP_ANIMATION_TIME,
-            mode: Clutter.AnimationMode.EASE_OUT_QUAD,
+            mode: Clutter.AnimationMode.EASE_IN_QUAD,
             onComplete: () => (this._tooltip.visible = this.hover),
         });
     }
