@@ -1402,8 +1402,10 @@ export default class WindowListExtension extends Extension {
             });
         } else {
             this._movedChildList.forEach(child => {
-                    Main.panel._rightBox.remove_child(child);
-                    Main.panel._leftBox.add_child(child);
+                    if (child) {
+                        Main.panel._rightBox.remove_child(child);
+                        Main.panel._leftBox.add_child(child);
+                    }
 
             this._movedChildList = null;
             });
