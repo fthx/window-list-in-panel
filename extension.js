@@ -29,7 +29,7 @@ import {WorkspaceIndicator} from './workspaceIndicator.js';
 
 const ICON_TEXTURE_SIZE = 24;
 const TOOLTIP_OFFSET = 6;
-const DASH_ITEM_LABEL_SHOW_TIME = 150;
+const DASH_ITEM_LABEL_SHOW_TIME = 500;
 
 const DND_ACTIVATE_TIMEOUT = 500;
 const MIN_DRAG_UPDATE_INTERVAL = 500 * GLib.TIME_SPAN_MILLISECOND;
@@ -393,7 +393,7 @@ class BaseButton extends DashItemContainer {
         this.label.ease({
             opacity: 255,
             duration: DASH_ITEM_LABEL_SHOW_TIME,
-            mode: Clutter.AnimationMode.EASE_OUT_QUAD,
+            mode: Clutter.AnimationMode.EASE_IN_QUAD,
         });
     }
 
