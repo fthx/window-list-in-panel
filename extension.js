@@ -1415,11 +1415,11 @@ export default class WindowListExtension extends Extension {
     _moveDate(flag) {
         if (flag) {
             Main.sessionMode.panel.center = Main.sessionMode.panel.center
-                .filter(item => item != 'dateMenu')
+                .filter(item => item != 'dateMenu');
             Main.sessionMode.panel.right.splice(-1, 0, 'dateMenu');
         } else {
             Main.sessionMode.panel.right = Main.sessionMode.panel.right
-                .filter(item => item != 'dateMenu')
+                .filter(item => item != 'dateMenu');
             Main.sessionMode.panel.center.push('dateMenu');
         }
 
