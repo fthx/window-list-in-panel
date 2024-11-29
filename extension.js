@@ -27,7 +27,7 @@ import {DashItemContainer} from 'resource:///org/gnome/shell/ui/dash.js';
 
 import {WorkspaceIndicator} from './workspaceIndicator.js';
 
-const ICON_TEXTURE_SIZE = 24;
+const ICON_TEXTURE_SIZE = 18;
 const TOOLTIP_OFFSET = 6;
 const DASH_ITEM_LABEL_SHOW_TIME = 500;
 
