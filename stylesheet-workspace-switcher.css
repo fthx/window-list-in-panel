@@ -53,7 +53,8 @@
 }
 
 .window-list-workspace-indicator .workspace {
-  width: 52px;
+  width: 36px;
+  padding: 1px;
 }
 
 .window-list-workspace-indicator-menu .workspace {
