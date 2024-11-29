@@ -4,7 +4,7 @@
 "settings-schema": "org.gnome.shell.extensions.window-list",
 "gettext-domain": "gnome-shell-extensions",
 "name": "Window List in Panel",
-"description": "Display workspaces thumbnails and window list in the top panel.\n\nThis unofficial extension is a fork of the official Classic Mode's Window List GNOME extension.",
+"description": "Display workspaces thumbnails and window list in the top panel.\n\nThis unofficial extension is a fork of the official Classic Mode's Window List GNOME extension.\n\n Indicators in panel's left box will be moved to right box. Needs a session restart.",
 "shell-version": [ "47" ],
 "url": "https://github.com/fthx/window-list-in-panel",
 "version": 999

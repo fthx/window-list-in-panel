@@ -47,7 +47,7 @@
 
 .window-list-workspace-indicator-menu .workspace,
 .window-list-workspace-indicator .workspace {
-  border: 2px solid transparent;
+  border: 1px solid transparent;
   border-radius: 4px;
   background-color: #3f3f3f;
 }
