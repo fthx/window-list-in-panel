@@ -35,21 +35,21 @@
 }
 
 .window-button-box {
-  spacing: 4px;
+  spacing: 3px;
 }
 
 .window-button > StWidget {
   color: #fff;
   background-color: transparent;
   border-radius: 4px;
-  padding: 3px 6px 1px;
+  padding: 2px 4px 2px;
   transition: 100ms ease;
 }
 
 .window-button > StWidget,
 .window-list .placeholder {
-  -st-natural-width: 18.75em;
-  max-width: 18.75em;
+  -st-natural-width: 20em;
+  max-width: 20em;
 }
 
 .window-list .placeholder {
@@ -90,8 +90,8 @@
 }
 
 .window-button-icon {
-  width: 24px;
-  height: 24px;
+  width: 18px;
+  height: 18px;
 }
 
 .window-button-abstract-label {

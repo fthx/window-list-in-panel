@@ -15,7 +15,7 @@
 }
 
 .window-list-workspace-indicator-menu .workspaces-view {
-  max-width: 480px;
+  max-width: 30em;
 }
 
 .window-list-workspace-indicator .workspaces-box {
@@ -28,17 +28,17 @@
 }
 
 .window-list-workspace-indicator .workspace-box {
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding-top: 4px;
+  padding-bottom: 4px;
 }
 
 .window-list-workspace-indicator StButton:first-child:ltr > .workspace-box,
 .window-list-workspace-indicator StButton:last-child:rtl > .workspace-box {
-  padding-left: 5px;
+  padding-left: 0px;
 }
 .window-list-workspace-indicator StButton:last-child:ltr > .workspace-box,
 .window-list-workspace-indicator StButton:first-child:rtl > .workspace-box {
-  padding-right: 5px;
+  padding-right: 0px;
 }
 
 .window-list-workspace-indicator-menu .workspace-box {
